@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Esquiva do Botão "Não"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Mostra a teta?</p>
+        <button onclick="mostrarMensagem('Sim')">Sim</button>
+        <button id="nao" onclick="esquivarClique()">Não</button>
+    </div>
+
+    <script>
+        var clicouNao = false;
+
+        function mostrarMensagem (resposta) {
+            if (resposta === 'Sim') {
+                alert("ihuuuuul");
+            }
+        }
+
+        function esquivarClique() {
+            if (!clicouNao) {
+                alert("Você clicou em Não, isso nao é uma opção maluzinha");
+                clicouNao = true;
+            }
+
+            var botaoNao = document.getElementById("nao");
+            var containerWidth = document.querySelector('.container').offsetWidth;
+            var containerHeight = document.querySelector('.container').offsetHeight;
+            var buttonWidth = botaoNao.offsetWidth;
+            var buttonHeight = botaoNao.offsetHeight;
+
+            var left = Math.random() * (containerWidth - buttonWidth);
+            var top = Math.random() * (containerHeight - buttonHeight);
+
+            botaoNao.style.left = left + "px";
+            botaoNao.style.top = top + "px";
+        }
+    </script>
+</body>
+</html>
